@@ -1,0 +1,16 @@
+#ifndef AIRSCREW_H
+#define AIRSCREW_H
+
+#include <QGraphicsPixmapItem>
+#include <QObject>
+
+class Airscrew: QObject,public QGraphicsPixmapItem{
+    Q_OBJECT
+property bool 
+public:
+    Airscrew(QGraphicsItem* parent=0);
+public slots:
+    void move();
+};
+
+#endif // AIRSCREW_H

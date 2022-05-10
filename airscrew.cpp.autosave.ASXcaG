@@ -1,0 +1,26 @@
+#include "airscrew.h"
+
+Airscrew::Airscrew(QGraphicsItem* parent): QObject(), QGraphicsPixmapItem(parent)
+{
+    // draw the rect
+    setPixmap(QPixmap(":/images/bullet1.gif"));
+    
+    // connect
+    QTimer * timer = new QTimer();
+    connect(timer,SIGNAL(timeout()),this,SLOT(move()));
+    
+    timer->start(50);
+}
+
+void Airscrew::move(){
+
+    // move bullet up
+    //setPos(x(),y()-10);
+    setTransformOriginPoint();
+    
+    // checking if the bullet is off the screen and deleting( if it is)
+    if (pos().y()+pixmap().height() < 0){
+        scene()->removeItem(this); delete this;
+        qDebug() << "bullet deleted";
+    }
+}
